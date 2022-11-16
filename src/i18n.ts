@@ -8,11 +8,17 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    backend: {
+      loadPath: process.env.NODE_ENV === "production"
+      ? "impresario/locales/{{lng}}/{{ns}}.json"
+      : "locales/{{lng}}/{{ns}}.json"
+    },
     debug: false,
     fallbackLng: 'ru',
     interpolation: {
       escapeValue: false,
-    }
+    },
+
   })
 
   export default i18n;

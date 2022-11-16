@@ -4,6 +4,7 @@ import { useGameLogic } from "./hooks/gameLogic";
 
 const App = () => {
   useGameLogic();
+  console.log(process.env.NODE_ENV);
 
   return (
     <div>
