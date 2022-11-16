@@ -1,0 +1,29 @@
+@import "./../../../styles/vars";
+
+.manage-real-estate {
+  &__radio {
+    display: none;
+  }
+
+  &__list {
+    border-radius: calc($size * 0.2);
+    overflow: hidden;
+    color: #eee;
+  }
+
+  &__field.active {
+    background-color: rgba($bgHeader, 0.5);
+  }
+
+  &__field {
+    display: block;
+    padding: calc($size * 0.3);
+    background-color: rgba($bgHeader, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:not(.active):hover {
+      background-color: rgba($bgHeader, 0.3);
+    }
+  }
+}

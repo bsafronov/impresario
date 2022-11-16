@@ -1,0 +1,42 @@
+@import "/src/styles/vars";
+
+.box {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(black, 0.7);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(black, 0.7);
+  overflow-y: hidden;
+}
+
+.inner {
+  background-color: $bgMain;
+  border-radius: $borderRad;
+  padding: $size;
+  display: flex;
+  flex-direction: column;
+  gap: calc($size * 0.5);
+  font-size: $size;
+  max-height: 90vh;
+  max-width: 90vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &.fixed {
+    overflow-y: hidden;
+    background-color: #fff;
+  }
+
+  &::-webkit-scrollbar {
+    width: calc($size * 0.3);
+    background-color: transparent;
+    border-radius: calc($size * 1);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: calc($size * 0.2);
+    background-color: rgba($bgHeader, 0.3);
+  }
+}

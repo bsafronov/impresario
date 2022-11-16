@@ -1,0 +1,11 @@
+@import "/src/styles/vars";
+
+.svg {
+  transform: rotate(90deg);
+  width: calc($size * 5);
+  height: calc($size * 5);
+}
+
+.path {
+  fill: rgba($bgHeader, 0.1);
+}

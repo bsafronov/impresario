@@ -1,0 +1,26 @@
+@import "/src/styles/vars";
+
+.box {
+  padding: $size;
+  background-color: rgba($bgMain, 0.05);
+  border-radius: calc($size * 0.5);
+  margin-bottom: $size;
+}
+
+.desc {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: calc($size);
+  font-size: calc($size);
+  font-weight: bold;
+}
+
+.day {
+  opacity: 0.2;
+}
+
+.list {
+  display: flex;
+  gap: calc($size * 1);
+  flex-wrap: wrap;
+}

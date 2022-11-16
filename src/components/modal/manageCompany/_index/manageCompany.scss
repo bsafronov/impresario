@@ -1,0 +1,67 @@
+@import "/src/styles/vars";
+
+.modal-manage-company {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(black, 0.7);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__remove {
+    align-self: flex-end;
+  }
+
+  &__box {
+    width: 50%;
+    background-color: $bgMain;
+    border-radius: calc($size * 0.75);
+    opacity: 1;
+    position: relative;
+    z-index: 10;
+    padding: $size;
+    font-size: calc($size * 0.75);
+    color: rgb(31, 30, 30);
+  }
+
+  &__title {
+    text-align: center;
+    font-size: calc($size * 1.5);
+    margin-bottom: $size;
+  }
+
+  &__exchange {
+    display: flex;
+    align-items: center;
+    gap: calc($size * 0.3);
+  }
+
+  &__input {
+    padding: calc($size * 0.2);
+    margin-bottom: calc($size * 0.5);
+    border-radius: calc($borderRad * 0.5);
+    background-color: rgb(223, 223, 223);
+
+    &::placeholder {
+      color: rgb(189, 188, 188);
+      font-size: calc($size * 0.7);
+    }
+
+    &:invalid {
+      background-color: lightcoral;
+    }
+  }
+
+  &__form {
+    display: flex;
+    gap: $size;
+  }
+
+  &__accept {
+    padding: calc($size * 0.2) calc($size);
+    border-radius: calc($borderRad * 0.5);
+    background-color: #eee;
+    transition: background-color 0.25s;
+  }
+}

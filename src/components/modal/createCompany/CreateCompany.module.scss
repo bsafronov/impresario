@@ -1,0 +1,48 @@
+@import "./../../../styles/vars";
+
+.title {
+  text-align: center;
+  font-size: calc($size * 1.5);
+  margin-bottom: $size;
+}
+
+.box {
+  width: 50%;
+  background-color: $bgMain;
+  border-radius: calc($size * 0.75);
+  opacity: 1;
+  position: relative;
+  z-index: 10;
+  padding: $size;
+  font-size: calc($size * 0.75);
+  color: rgb(31, 30, 30);
+}
+
+.point {
+  display: flex;
+  gap: calc($size * 0.3);
+  flex-direction: column;
+  max-width: 50%;
+  margin-bottom: calc($size);
+}
+
+.input {
+  padding: calc($size * 0.2);
+  margin-bottom: calc($size * 0.5);
+  border-radius: calc($borderRad * 0.5);
+}
+
+.accept {
+  padding: calc($size * 0.2) calc($size);
+  border-radius: calc($borderRad * 0.5);
+  background-color: #eee;
+  transition: background-color 0.25s;
+
+  &:hover:not([disabled]) {
+    background-color: rgb(212, 212, 212);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+}

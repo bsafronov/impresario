@@ -1,0 +1,12 @@
+@import "./../../../styles/vars";
+
+.manage-company-item__box {
+  display: flex;
+  gap: calc($size * 0.5);
+  flex-direction: column;
+  margin-bottom: calc($size);
+  border-radius: calc($size * 0.2);
+  box-shadow: 0 0 20px rgba($bgHeader, 0.5);
+  padding: calc($size * 0.5);
+  background-color: rgba($bgHeader, 0.4);
+}

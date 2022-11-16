@@ -1,0 +1,59 @@
+@import "/src/styles/vars";
+
+$bgPropmt: rgb(212, 212, 212);
+
+.box {
+  display: flex;
+  position: relative;
+}
+
+.svg {
+  cursor: pointer;
+  width: calc($size * 0.5);
+  height: calc($size * 0.5);
+
+  &:hover path {
+    fill: rgba($bgHeader, 0.6);
+  }
+}
+
+.path {
+  transition: fill 0.3s;
+  fill: rgba($bgHeader, 0.4);
+}
+
+.prompt {
+  background-color: $bgPropmt;
+  position: absolute;
+  content: "";
+  top: calc($size * -0.2);
+  left: 0;
+  transform: translate(-100%, -100%);
+  padding: calc($size * 0.4);
+  border-radius: calc($size * 0.4);
+  z-index: 1;
+  font-size: calc($size * 0.5);
+  font-weight: bold;
+  transition: opacity 0.3s;
+  width: max-content;
+  max-width: calc($size * 7);
+
+  &::after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    transform: translate(-10%, 45%) rotate(-45deg);
+    // padding: calc($size * 0.3);
+    border-left: 0.5em solid transparent;
+    border-right: 0.5em solid transparent;
+    border-top: 1em solid $bgPropmt;
+    border-radius: calc($size * 0.2);
+  }
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}

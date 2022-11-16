@@ -1,0 +1,32 @@
+@import "/src/styles/vars";
+
+.text {
+  padding: calc((1vw + 1vh) * 0.2);
+  border-radius: 0.2em;
+  background-color: rgb(223, 223, 223);
+  width: 100%;
+
+  &::placeholder {
+    color: rgba(black, 0.2);
+  }
+}
+
+.number {
+  padding: calc((1vw + 1vh) * 0.2);
+  border-radius: 0.2em;
+  background-color: rgb(223, 223, 223);
+  width: 100%;
+
+  &::placeholder {
+    font-size: 0.8em;
+    color: rgba(black, 0.2);
+  }
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  &:invalid {
+    background-color: lightcoral;
+  }
+}

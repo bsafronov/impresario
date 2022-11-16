@@ -1,0 +1,42 @@
+@import "./reset";
+@import "./vars";
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto";
+  color: $colorMain;
+  min-height: 100vh;
+  background: linear-gradient(180deg, $bgHeader 0%, $bgMain 100%) no-repeat;
+}
+
+// Start button------------------------------------
+button {
+  padding: calc($size * 0.3) calc($size * 1);
+  border-radius: calc($size * 0.2);
+  opacity: 0.5;
+  color: #eee;
+  transition: opacity 0.2s, box-shadow 0.5s;
+  font-weight: bold;
+
+  &:not([disabled]):hover {
+    opacity: 1;
+  }
+  &.active {
+    opacity: 1;
+  }
+}
+
+// End Button--------------------------------------
+
+.title {
+  font-size: calc($size);
+  text-align: center;
+  font-weight: bold;
+}

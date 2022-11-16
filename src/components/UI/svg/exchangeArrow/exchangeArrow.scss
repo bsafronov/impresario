@@ -1,0 +1,22 @@
+@import "./../../../../styles/vars";
+
+.exchange-arrow {
+  width: calc($size * 1);
+  height: calc($size * 1);
+  transform: rotate(90deg);
+  cursor: pointer;
+  transition: transform 0.1s;
+
+  &.reversed {
+    transform: rotate(90deg) scale(-1, 1);
+  }
+
+  &:hover path {
+    fill: rgba(#eee, 1);
+  }
+
+  & path {
+    fill: rgba(#eee, 0.5);
+    transition: fill 0.5s;
+  }
+}

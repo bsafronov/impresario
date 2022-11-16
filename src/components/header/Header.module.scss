@@ -1,0 +1,86 @@
+@import "./../../styles/vars";
+
+.header {
+  font-size: calc($size);
+  padding: calc($size) calc($size * 5);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: calc($size * 0.05) solid rgba($bgMain, 0.1);
+}
+
+.title {
+  display: flex;
+  gap: calc($size * 0.5);
+}
+
+.status {
+  font-size: calc($size * 0.5);
+  opacity: 0.3;
+}
+
+.nav {
+  display: flex;
+  gap: 2vw;
+}
+
+.item {
+  cursor: pointer;
+  transition: text-shadow 0.5s, color 2s;
+  &:hover {
+    color: #eee;
+    text-shadow: 0 0 30px rgb(15, 207, 218), 0 0 10px #eee;
+  }
+}
+
+.options {
+  display: flex;
+  gap: calc($size * 0.3);
+  align-items: center;
+  cursor: pointer;
+  transition: text-shadow 0.5s, color 2s;
+
+  &:hover {
+    text-shadow: 0 0 30px rgb(15, 207, 218), 0 0 10px #eee;
+  }
+
+  &:hover svg {
+    transform: rotate(90deg);
+    filter: drop-shadow(0 0 10px rgb(218, 137, 15));
+  }
+
+  svg {
+    width: calc($size * 0.7);
+    height: calc($size * 0.7);
+    transition: transform 0.5s, filter 0.5s;
+  }
+
+  circle {
+    fill: transparent;
+  }
+
+  path {
+    fill: $colorMain;
+  }
+}
+
+.logo {
+  animation: logoAnim 5s 0s infinite ease-in-out;
+
+  &__s {
+    text-shadow: 0 0 50px rgb(216, 197, 24), 0 0 60px rgb(230, 196, 45),
+      0 0 10px rgb(255, 241, 46);
+  }
+}
+
+@keyframes logoAnim {
+  0% {
+    text-shadow: 0 0 0px #fff;
+  }
+  50% {
+    text-shadow: 0 0 50px rgb(29, 141, 175), 0 0 20px rgb(164, 182, 187);
+    color: #eee;
+  }
+  to {
+    text-shadow: 0 0 0px #fff;
+  }
+}

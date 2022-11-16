@@ -1,0 +1,9 @@
+@import "./../../../../styles/vars";
+
+.company-name {
+  &__form {
+    display: flex;
+    gap: calc($size * 0.3);
+    align-items: center;
+  }
+}

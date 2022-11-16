@@ -1,0 +1,86 @@
+@import "./../../../styles/vars";
+
+.general__item {
+  background-image: linear-gradient(180deg, $bgHeader, transparent);
+  box-shadow: 0px -10px 20px rgba($bgHeader, 0.2);
+  font-size: calc($size * 0.9);
+  padding: calc($size * 0.5);
+  border-radius: calc($size * 0.3);
+
+  &-title {
+    font-size: calc($size * 0.7);
+    margin-bottom: calc($size * 0.5);
+  }
+
+  &-sum {
+    color: #eee;
+    margin-bottom: calc($size * 0.5);
+  }
+
+  &-title-box {
+    display: flex;
+    gap: calc($size * 0.1);
+  }
+
+  &-title-box svg {
+    width: calc($size * 0.5);
+    height: calc($size * 0.5);
+    cursor: pointer;
+
+    &:hover path {
+      fill: #eee;
+    }
+    &:hover {
+      filter: drop-shadow(0px 0px 10px $bgMain);
+      // -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+    }
+  }
+
+  &-title-box path {
+    fill: $bgMain;
+    transition: fill 0.5s;
+  }
+
+  &-income {
+    font-size: calc($size * 0.6);
+    display: flex;
+    gap: calc($size * 0.2);
+  }
+
+  &-income svg {
+    transform: rotate(15deg);
+    width: calc($size * 0.6);
+    height: calc($size * 0.6);
+  }
+
+  &-income-desc {
+    font-size: calc($size * 0.4);
+    color: rgba(#eee, 0.5);
+  }
+
+  &-income.increase {
+    color: rgb(109, 206, 109);
+
+    & svg {
+      filter: drop-shadow(0 0 1px rgb(109, 206, 109));
+      -webkit-filter: drop-shadow(0 0 1px rgb(109, 206, 109));
+    }
+
+    & path {
+      fill: rgb(109, 206, 109);
+    }
+  }
+
+  &-income.decrease {
+    color: rgb(233 79 79 / 80%);
+
+    & svg {
+      transform: scale(1, -1);
+      filter: drop-shadow(0 0 1px rgb(233 79 79));
+      -webkit-filter: drop-shadow(0 0 1px rgb(233 79 79));
+    }
+    & path {
+      fill: rgb(233 79 79 / 80%);
+    }
+  }
+}

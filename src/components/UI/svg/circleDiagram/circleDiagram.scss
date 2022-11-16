@@ -1,0 +1,57 @@
+@import "./../../../../styles/vars";
+
+.circle-diagram-box {
+  position: relative;
+  width: calc($size * 5);
+  height: calc($size * 5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-diagram-box__item {
+  position: absolute;
+
+  $radius: 45%;
+
+  & svg {
+    transform: rotate(-90deg);
+    overflow: visible;
+  }
+
+  & circle {
+    transition: stroke-dashoffset 2s;
+    stroke-width: calc($size * 0.13);
+  }
+
+  & circle:nth-child(1) {
+    $square: calc(6.28 * $radius);
+
+    stroke-dasharray: $square;
+    stroke-dashoffset: calc($square - $square * var(--percent) / 100);
+  }
+
+  &:nth-child(1) {
+    $circleColor: rgb(54, 245, 229);
+    width: calc($size * 5);
+    height: calc($size * 5);
+
+    & circle:nth-child(1) {
+      stroke: $circleColor;
+      filter: drop-shadow(0 0 2px $circleColor)
+        drop-shadow(0 0 10px $circleColor);
+    }
+  }
+
+  &:nth-child(2) {
+    $circleColor: rgb(243, 21, 206);
+    width: calc($size * 4);
+    height: calc($size * 4);
+
+    & circle:nth-child(1) {
+      stroke: $circleColor;
+      filter: drop-shadow(0 0 5px $circleColor)
+        drop-shadow(0 0 10px $circleColor);
+    }
+  }
+}

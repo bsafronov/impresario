@@ -1,0 +1,57 @@
+@import "/src/styles/_vars";
+
+.box__animated {
+  background-color: $bgHeader;
+  -webkit-animation: Animation 4s ease infinite;
+  -moz-animation: Animation 4s ease infinite;
+  animation: Animation 4s ease infinite;
+  border-radius: calc($size * 0.2);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.visible {
+  transition: opacity 1s;
+}
+
+@-webkit-keyframes Animation {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+@-moz-keyframes Animation {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+@keyframes Animation {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}

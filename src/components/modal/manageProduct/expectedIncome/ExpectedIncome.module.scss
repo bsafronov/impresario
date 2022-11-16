@@ -1,0 +1,52 @@
+@import "/src/styles/vars";
+
+.box {
+  display: flex;
+  width: calc($size * 40);
+  flex-direction: column;
+  gap: calc($size * 0.5);
+}
+
+.title {
+  margin-left: calc($size * 0.5);
+  opacity: 0.7;
+  // align-self: center;
+  font-weight: bold;
+}
+
+.title__box {
+  display: flex;
+  gap: calc($size * 0.1);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: calc($size * 0.7);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba($bgHeader, 0.2);
+  text-align: center;
+}
+
+.property {
+  padding: calc($size * 0.5);
+  border-bottom: 1px solid rgba($bgHeader, 0.2);
+  background-color: rgba($bgHeader, 0.1);
+  transition: background-color 0.5s;
+}
+
+.property__red {
+  padding: calc($size * 0.5);
+  border-bottom: 1px solid rgba($bgHeader, 0.2);
+  background-color: rgba(red, 0.4);
+  transition: background-color 0.5s;
+}
+
+.value {
+  display: block;
+  padding: calc($size * 0.5);
+}
