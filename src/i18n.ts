@@ -9,9 +9,10 @@ i18n
   .use(initReactI18next)
   .init({
     backend: {
-      loadPath: process.env.NODE_ENV === "development"
-      ? "locales/{{lng}}/{{ns}}.json"
-      : "impresario/locales/{{lng}}/{{ns}}.json"
+      loadPath: () => {
+        const host = window.location.host
+        return (host === "bsafronov.github.io" ? "/impresario" : '') + "locales/{{lng}}/{{ns}}.json"
+      }
     },
     debug: false,
     fallbackLng: 'ru',
