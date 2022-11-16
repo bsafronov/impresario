@@ -9,9 +9,9 @@ i18n
   .use(initReactI18next)
   .init({
     backend: {
-      loadPath: process.env.NODE_ENV === "production"
-      ? "impresario/locales/{{lng}}/{{ns}}.json"
-      : "locales/{{lng}}/{{ns}}.json"
+      loadPath: process.env.NODE_ENV === "development"
+      ? "locales/{{lng}}/{{ns}}.json"
+      : "impresario/locales/{{lng}}/{{ns}}.json"
     },
     debug: false,
     fallbackLng: 'ru',
