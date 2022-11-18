@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   color: rgba(black, 0.7);
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .inner {
@@ -24,6 +24,8 @@
   max-width: 90vw;
   overflow-y: auto;
   overflow-x: hidden;
+  opacity: 0;
+  animation: innerAnim 0.5s forwards;
 
   &.fixed {
     overflow-y: hidden;
@@ -38,5 +40,11 @@
   &::-webkit-scrollbar-thumb {
     border-radius: calc($size * 0.2);
     background-color: rgba($bgHeader, 0.3);
+  }
+}
+
+@keyframes innerAnim {
+  100% {
+    opacity: 1;
   }
 }

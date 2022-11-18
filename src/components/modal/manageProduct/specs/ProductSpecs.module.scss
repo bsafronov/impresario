@@ -21,3 +21,19 @@
   opacity: 0.7;
   margin-left: calc($size * 0.5);
 }
+
+.value {
+  opacity: 0;
+  animation: Anim 1s forwards;
+}
+
+.item {
+  display: flex;
+  gap: calc($size * 0.25);
+}
+
+@keyframes Anim {
+  to {
+    opacity: 1;
+  }
+}

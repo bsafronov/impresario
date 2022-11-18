@@ -11,6 +11,8 @@
   display: flex;
   flex-direction: column;
   gap: calc($size * 0.5);
+  opacity: 0;
+  animation: Anim 1s forwards;
 }
 
 .title {
@@ -25,7 +27,7 @@
   padding: calc($size * 0.5);
   border-radius: calc($size * 0.2);
   background-color: rgba($bgHeader, 0.1);
-  max-width: calc($size * 50);
+  max-width: calc($size * 40);
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -55,6 +57,11 @@
   gap: calc($size * 0.25);
 }
 
+.value {
+  display: flex;
+  gap: calc($size * 0.25);
+}
+
 .green {
   @extend %status;
   background-color: darkgreen;
@@ -73,6 +80,12 @@
     opacity: 0.1;
   }
   100% {
+    opacity: 1;
+  }
+}
+
+@keyframes Anim {
+  to {
     opacity: 1;
   }
 }

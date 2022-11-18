@@ -43,11 +43,11 @@ export const productProgressData = (calc: IProductCalculations) => {
       value: "+" + calc.finalState.adLvlUp.toFixed(2) + " ед.",
     },
     {
-      property: "Вероятность дохода",
+      property: "Безубыток",
       prompt: "Фактическая вероятность достичь точки безубытка",
       value: (calc.finalState.profitChance * 100).toFixed(1) + " %",
     },
   ];
 
-  return {content, income};
-}
+  return { content, income };
+};

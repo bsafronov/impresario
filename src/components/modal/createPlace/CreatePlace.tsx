@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { shortBalance } from "../../../functions/representation";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import {
   ICompany,
@@ -91,7 +92,7 @@ const CreatePlace = () => {
           <p className={s.balance}>
             <span>{t("create-place.balance")}</span>
             <span className={s.value}>
-              ${balance}
+              ${shortBalance(balance)}
               <span className={s.costs}>{rank > 0 && ` -${price}$`}</span>
             </span>
           </p>

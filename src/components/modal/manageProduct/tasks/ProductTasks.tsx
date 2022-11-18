@@ -1,11 +1,16 @@
 import { FC } from "react";
+import {
+  fullBalance,
+  shortBalance,
+} from "../../../../functions/representation";
 import { useAppSelector } from "../../../../hooks/redux";
+import LogoMore from "../../../UI/svg/logoMore/LogoMore";
 import { IProductTasks } from "./ProductTasks.interface";
 import s from "./ProductTasks.module.scss";
 
 const ProductTasks: FC<IProductTasks> = ({ tasks }) => {
   const { gameDay } = useAppSelector(state => state.rulesReducer);
-  function deleteTask() {}
+
   return (
     <div className={s.box}>
       <h3 className={s.title}>Активное производство</h3>
@@ -18,7 +23,10 @@ const ProductTasks: FC<IProductTasks> = ({ tasks }) => {
             </li>
             <li className={s.line}>
               <span>Деньги:</span>
-              <span>${task.expectedIncome}</span>
+              <span className={s.value}>
+                <span>{shortBalance(task.expectedIncome)}</span>
+                <LogoMore text={fullBalance(task.expectedIncome)} />
+              </span>
             </li>
             <li className={s.line}>
               <span>Осталось:</span>
@@ -43,7 +51,10 @@ const ProductTasks: FC<IProductTasks> = ({ tasks }) => {
             </li>
             <li className={s.line}>
               <span>Затраты:</span>
-              <span>${task.costs}</span>
+              <span className={s.value}>
+                <span>{shortBalance(task.costs)}</span>
+                <LogoMore text={fullBalance(task.costs)} />
+              </span>
             </li>
             <li className={s.line}>
               <span>Реклама:</span>

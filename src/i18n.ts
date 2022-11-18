@@ -11,7 +11,7 @@ i18n
     backend: {
       loadPath: () => {
         const host = window.location.host
-        return (host === "bsafronov.github.io" ? "/impresario" : '') + "/locales/{{lng}}/{{ns}}.json"
+        return "impresario/locales/{{lng}}/{{ns}}.json"
       }
     },
     debug: false,

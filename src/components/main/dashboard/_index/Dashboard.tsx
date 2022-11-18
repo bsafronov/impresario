@@ -5,6 +5,7 @@ const Dashboard = () => {
   return (
     <section className="dashboard">
       <CompanyList />
+      {/* <News /> */}
     </section>
   );
 };

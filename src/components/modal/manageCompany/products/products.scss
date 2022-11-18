@@ -24,7 +24,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: calc($size * 0.5);
     max-height: 50vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: calc($size * 0.3);
 
     &::-webkit-scrollbar {

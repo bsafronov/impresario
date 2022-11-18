@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { shortBalance } from "../../../../functions/representation";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import {
   ICompany,
@@ -10,6 +11,7 @@ import Button from "../../../UI/button/Button";
 import Input from "../../../UI/input/Input";
 import ManageCompanyItemBox from "../../../UI/manageCompanyItemBox/ManageCompanyItemBox";
 import ExchangeArrow from "../../../UI/svg/exchangeArrow/ExchangeArrow";
+import s from "./MoneyTransfer.module.scss";
 import "./moneyTransfer.scss";
 
 interface IMoneyTransfer {
@@ -51,28 +53,34 @@ const MoneyTransfer: FC<IMoneyTransfer> = ({ company }) => {
 
   return (
     <ManageCompanyItemBox>
-      <div className="modal-manage-company__exchange">
+      <div className={s.exchange}>
         <ExchangeArrow
           reversed={isTransferToCompany}
           onClick={() => setIsTransferToCompany(!isTransferToCompany)}
         />
-        <p className="modal-manage-company__label">
+        <p className={s.label}>
           {t("manage-company.transfer.from")}
           {isTransferToCompany
-            ? t("manage-company.transfer.free-money") + "$" + freeMoney
+            ? t("manage-company.transfer.free-money") +
+              "$" +
+              shortBalance(freeMoney)
             : t("manage-company.transfer.company-money") +
               "$" +
-              company.balance}
+              shortBalance(company.balance)}
           <br />
           {t("manage-company.transfer.to")}
           {isTransferToCompany
-            ? t("manage-company.transfer.company-money") + "$" + company.balance
-            : t("manage-company.transfer.free-money") + "$" + freeMoney}
+            ? t("manage-company.transfer.company-money") +
+              "$" +
+              shortBalance(company.balance)
+            : t("manage-company.transfer.free-money") +
+              "$" +
+              shortBalance(freeMoney)}
         </p>
       </div>
-      <p className="money-transfer__form">
+      <p className={s.form}>
         <Input
-          className="money-transfer__input"
+          className={s.input}
           type="number"
           placeholder={
             isTransferToCompany
@@ -85,7 +93,7 @@ const MoneyTransfer: FC<IMoneyTransfer> = ({ company }) => {
           onChange={e => setCurrentBalance(e.target.value)}
         />
         <Button
-          className="money-transfer__accept"
+          className={s.accept}
           onClick={() => transferToFrom()}
           disabled={!isValidated()}
         >

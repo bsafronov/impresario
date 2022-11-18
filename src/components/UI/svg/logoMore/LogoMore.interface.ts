@@ -1,3 +1,3 @@
 export interface ILogoMore {
-  text?: string | string[]
+  text?: string | string[] | number;
 }

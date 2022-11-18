@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { shortBalance } from "../../../../functions/representation";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import { modalSlice } from "../../../../store/reducers/modal/modalSlice";
 import Button from "../../../UI/button/Button";
@@ -34,7 +35,7 @@ const CompanyList = () => {
             <div className={s.general}>
               <p>
                 <span className={s.desc}>{t("company.balance")}</span>
-                <span>${company.balance}</span>
+                <span>${shortBalance(company.balance)}</span>
               </p>
               <p>
                 <span className={s.desc}>{t("company.income")}</span>

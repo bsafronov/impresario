@@ -1,0 +1,37 @@
+@import "/src/styles/vars";
+
+.box {
+  padding: calc($size * 1);
+  border-radius: calc($size * 0.4);
+  background-image: linear-gradient(rgba($bgHeader, 0.4), rgba($bgMain, 0.1));
+  box-shadow: 0 0 10px rgba($bgHeader, 0.15);
+}
+
+.title {
+  font-size: calc($size * 1);
+  padding: calc($size * 0.4);
+  color: #eee;
+  text-shadow: 0 0 10px #56808d;
+}
+
+.list {
+  border-radius: calc($size * 0.2);
+  background-color: rgba($bgHeader, 0.1);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  border-radius: calc($size * 0.2);
+  gap: calc($size * 0.5);
+  overflow: hidden;
+}
+
+.item__title {
+  padding: calc($size * 0.5);
+  background-color: rgba($bgHeader, 0.2);
+}
+
+.item__text {
+  padding: calc($size * 0.5);
+}

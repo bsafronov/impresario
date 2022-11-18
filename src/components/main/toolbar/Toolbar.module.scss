@@ -1,0 +1,60 @@
+@import "/src/styles/vars";
+
+.box {
+  display: flex;
+  padding: calc($size * 0.1) $size;
+  justify-content: space-between;
+  font-size: calc($size * 0.5);
+  background-color: rgba($bgMain, 0.01);
+  border-radius: calc($size * 0.3);
+  margin-bottom: $size;
+}
+
+.companies {
+  display: flex;
+  align-items: center;
+  gap: $size;
+  transform: translate(-200%);
+  animation: animation 1s forwards;
+}
+
+.title {
+  font-size: $size;
+  font-weight: bold;
+}
+
+.statistics {
+  display: flex;
+  align-items: center;
+  gap: calc($size * 0.2);
+  transform: translate(200%);
+  animation: animation 0.5s forwards;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  border-radius: calc($size * 0.1);
+  overflow: hidden;
+  // gap: calc($size * 0.1);
+  & :nth-child(2) > button {
+    border-right: calc($size * 0.01) solid rgba($bgMain, 0.1);
+    border-left: calc($size * 0.01) solid rgba($bgMain, 0.1);
+  }
+}
+
+.item__btn {
+  padding: calc($size * 0.2);
+  background-color: rgba($bgMain, 0.05);
+  transition: background-color 0.25s;
+
+  &:hover {
+    background-color: rgba($bgMain, 0.15);
+  }
+}
+
+@keyframes animation {
+  to {
+    transform: translate(0);
+  }
+}

@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "../../../hooks/redux";
 import { modalSlice } from "../../../store/reducers/modal/modalSlice";
 import Button from "../../UI/button/Button";
+import s from "./Toolbar.module.scss";
 import "./toolbar.scss";
 
 function Toolbar() {
@@ -14,9 +15,9 @@ function Toolbar() {
   }
 
   return (
-    <div className="toolbar">
-      <div className="toolbar__companies">
-        <h3 className="toolbar__title">{t("toolbar.title")}</h3>
+    <div className={s.box}>
+      <div className={s.companies}>
+        <h3 className={s.title}>{t("toolbar.title")}</h3>
         <Button
           type="main-accept"
           className="toolbar__accept"
@@ -25,17 +26,17 @@ function Toolbar() {
           {t("toolbar.create-new")}
         </Button>
       </div>
-      <div className="toolbar__statistics">
+      <div className={s.statistics}>
         <span>{t("toolbar.showfor")}</span>
-        <ul className="toolbar__list">
+        <ul className={s.list}>
           <li>
-            <button className="toolbar__item-btn">{t("toolbar.7days")}</button>
+            <button className={s.item__btn}>{t("toolbar.7days")}</button>
           </li>
           <li>
-            <button className="toolbar__item-btn">{t("toolbar.30days")}</button>
+            <button className={s.item__btn}>{t("toolbar.30days")}</button>
           </li>
           <li>
-            <button className="toolbar__item-btn">{t("toolbar.1year")}</button>
+            <button className={s.item__btn}>{t("toolbar.1year")}</button>
           </li>
         </ul>
       </div>

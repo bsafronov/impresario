@@ -13,8 +13,8 @@
     background-color: rgba($bgMain, 0.3);
     display: grid;
     gap: calc($size * 0.5);
-    max-height: calc($size * 10);
-    overflow-y: scroll;
+    max-height: calc($size * 7.6);
+    overflow-y: auto;
     grid-template-columns: repeat(2, 1fr);
     font-size: calc($size * 0.7);
 

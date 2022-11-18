@@ -11,6 +11,8 @@
 .title {
   display: flex;
   gap: calc($size * 0.5);
+  transform: translate(-200%);
+  animation: animation 1s forwards;
 }
 
 .status {
@@ -38,6 +40,8 @@
   align-items: center;
   cursor: pointer;
   transition: text-shadow 0.5s, color 2s;
+  transform: translate(200%);
+  animation: animation 1s forwards;
 
   &:hover {
     text-shadow: 0 0 30px rgb(15, 207, 218), 0 0 10px #eee;
@@ -82,5 +86,11 @@
   }
   to {
     text-shadow: 0 0 0px #fff;
+  }
+}
+
+@keyframes animation {
+  to {
+    transform: translate(0);
   }
 }
