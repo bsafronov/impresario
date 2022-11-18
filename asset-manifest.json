@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/impresario/static/css/main.aac5ca1d.css",
-    "main.js": "/impresario/static/js/main.46fda3fb.js",
+    "main.js": "/impresario/static/js/main.53416292.js",
     "index.html": "/impresario/index.html",
     "static/media/getFetch.cjs": "/impresario/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.aac5ca1d.css.map": "/impresario/static/css/main.aac5ca1d.css.map",
-    "main.46fda3fb.js.map": "/impresario/static/js/main.46fda3fb.js.map"
+    "main.53416292.js.map": "/impresario/static/js/main.53416292.js.map"
   },
   "entrypoints": [
     "static/css/main.aac5ca1d.css",
-    "static/js/main.46fda3fb.js"
+    "static/js/main.53416292.js"
   ]
 }
