@@ -1,14 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  ITaskActive,
-  ITaskPending,
-  ITaskPendingToActive,
-  ITasks,
-} from "./task.interface";
+import { ITask, ITaskPendingToActive, ITasks } from "./task.interface";
 
 const initialState: ITasks = {
   totalCreated: 0,
-  minProductionTime: null,
   tasksActive: [],
   tasksPending: [],
 };
@@ -17,38 +11,44 @@ export const taskSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
-    createTaskActive(state, action: PayloadAction<ITaskActive>) {
+    setStateTasks(state, action: PayloadAction<ITasks | null>) {
+      if (action.payload) {
+        state.totalCreated = action.payload.totalCreated;
+        state.tasksActive = action.payload.tasksActive;
+        state.tasksPending = action.payload.tasksPending;
+      } else {
+        state.totalCreated = initialState.totalCreated;
+        state.tasksActive = initialState.tasksActive;
+        state.tasksPending = initialState.tasksPending;
+      }
+    },
+    createTaskActive(state, action: PayloadAction<ITask>) {
       state.totalCreated += 1;
-      const data: ITaskActive = {
+      const data: ITask = {
         id: state.totalCreated,
         ...action.payload,
       };
       state.tasksActive = [...state.tasksActive, data];
     },
-    createTaskPending(state, action: PayloadAction<ITaskPending>) {
+    createTaskPending(state, action: PayloadAction<ITask>) {
       state.totalCreated += 1;
-      const data: ITaskPending = {
+      const data: ITask = {
         id: state.totalCreated,
         ...action.payload,
       };
       state.tasksPending = [...state.tasksPending, data];
     },
-    finishActiveTasks(state, action: PayloadAction<ITaskActive[]>) {
+    finishActiveTasks(state, action: PayloadAction<ITask[]>) {
       state.tasksActive = action.payload;
     },
     pendingToActive(state, action: PayloadAction<ITaskPendingToActive>) {
       const managingTask = state.tasksPending.find(
         task => task.id === action.payload.id
-      ) as ITaskPending;
-      const taskData: ITaskActive = {
-        ...managingTask,
-        profitPercent: action.payload.profitPercent,
-        startedAtDay: action.payload.startedAtDay,
-      };
+      ) as ITask;
       state.tasksPending = state.tasksPending.filter(
         task => task.id !== action.payload.id
       );
-      state.tasksActive = [...state.tasksActive, taskData];
+      state.tasksActive = [...state.tasksActive, managingTask];
     },
   },
 });

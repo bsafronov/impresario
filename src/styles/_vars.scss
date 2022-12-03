@@ -1,10 +1,74 @@
 // Цветовая палитра
+:root {
+  --size: 2vw;
+}
+
 $bgMain: rgb(86, 128, 141);
 $bgHeader: rgb(82, 29, 75);
 $colorMain: rgb(201, 201, 201);
 
 // Резиновая верстка
-$size: calc(1vw + 1vh);
+$size: var(--size);
 
 // Скругления
 $borderRad: 10px;
+
+@media (min-width: 1920px) {
+  :root {
+    --size: 38.4px;
+  }
+}
+
+@media (max-width: 1320px) {
+  :root {
+    --size: 2.8vw;
+  }
+}
+
+@media (max-width: 1080px) {
+  :root {
+    --size: 2.8vw;
+  }
+}
+
+@media (max-width: 920px) {
+  :root {
+    --size: 3.2vw;
+  }
+}
+
+@media (max-width: 800px) {
+  :root {
+    --size: 3.6vw;
+  }
+}
+
+@media (max-width: 800px) {
+  :root {
+    --size: 4vw;
+  }
+}
+
+@media (max-width: 680px) {
+  :root {
+    --size: 4.4vw;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --size: 4.8vw;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --size: 5.2vw;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --size: 6vw;
+  }
+}

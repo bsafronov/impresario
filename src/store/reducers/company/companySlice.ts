@@ -4,7 +4,6 @@ import {
   ICompany,
   ICompanyAd,
   ICompanyMoney,
-  ICompanyTransferMoney,
 } from "./company.interface";
 
 const initialState: ICompanies = {
@@ -17,6 +16,17 @@ export const companySlice = createSlice({
   name: "companies",
   initialState,
   reducers: {
+    setStateCompanies(state, action: PayloadAction<ICompanies | null>) {
+      if (action.payload) {
+        state.totalCreated = action.payload.totalCreated;
+        state.freeMoney = action.payload.freeMoney;
+        state.companies = action.payload.companies;
+      } else {
+        state.totalCreated = initialState.totalCreated;
+        state.freeMoney = initialState.freeMoney;
+        state.companies = initialState.companies;
+      }
+    },
     createCompany(state, action: PayloadAction<string>) {
       const companyData: ICompany = {
         id: state.totalCreated + 1,
@@ -31,44 +41,6 @@ export const companySlice = createSlice({
       state.companies = state.companies.filter(
         company => company.id !== action.payload
       );
-    },
-    transferMoney(state, action: PayloadAction<ICompanyTransferMoney>) {
-      if (
-        action.payload.object === "free money" &&
-        action.payload.type === "to"
-      ) {
-        state.freeMoney += action.payload.amount;
-      }
-
-      if (
-        action.payload.object === "free money" &&
-        action.payload.type === "from"
-      ) {
-        state.freeMoney -= action.payload.amount;
-      }
-
-      if (action.payload.object === "company" && action.payload.type === "to") {
-        state.companies = state.companies.map(company => {
-          if (company.id === action.payload.companyId) {
-            company.balance += action.payload.amount;
-          }
-
-          return company;
-        });
-      }
-
-      if (
-        action.payload.object === "company" &&
-        action.payload.type === "from"
-      ) {
-        state.companies = state.companies.map(company => {
-          if (company.id === action.payload.companyId) {
-            company.balance -= action.payload.amount;
-          }
-
-          return company;
-        });
-      }
     },
     moneyToCompany(state, action: PayloadAction<ICompanyMoney>) {
       state.companies = state.companies.map(company => {

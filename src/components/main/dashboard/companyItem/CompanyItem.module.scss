@@ -1,0 +1,62 @@
+@import "/src/styles/vars";
+
+.item {
+  padding: $size;
+  border-radius: calc($size * 0.4);
+  background-image: linear-gradient(180deg, rgba($bgHeader, 0.7), transparent);
+  font-size: calc($size * 0.65);
+  display: flex;
+  gap: $size;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 10px rgba($bgHeader, 0.15);
+  transition: box-shadow 0.2s, transform 0.5s;
+  flex-grow: 1;
+}
+
+.title {
+  padding: calc($size * 0.4);
+  font-size: $size;
+  display: inline-block;
+  margin-bottom: calc($size * 0.5);
+  color: #eee;
+  text-shadow: 0 0 10px rgba($bgMain, 1);
+}
+
+.desc {
+  font-size: calc($size * 0.5);
+}
+
+.general {
+  display: flex;
+  flex-direction: column;
+  gap: calc($size * 0.2);
+  padding: calc($size * 0.4);
+  background-color: rgba($bgHeader, 0.3);
+  box-shadow: 0 0 10px rgba($bgHeader, 0.5);
+  border-radius: calc($size * 0.4);
+  width: max-content;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: calc($size * 0.5);
+}
+
+.manage-btn {
+  border-radius: calc($size * 0.2);
+  padding: calc($size * 0.2);
+  background-color: rgba($bgHeader, 0.2);
+  box-shadow: 0 0 2px rgba($bgHeader, 0.5);
+  transition: background-color 0.3s;
+  font-weight: bold;
+  text-transform: uppercase;
+  &:hover {
+    background-color: rgba($bgHeader, 0.5);
+  }
+}
+
+.list__btn {
+  opacity: 0.1;
+}

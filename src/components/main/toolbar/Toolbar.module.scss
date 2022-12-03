@@ -48,6 +48,11 @@
   background-color: rgba($bgMain, 0.05);
   transition: background-color 0.25s;
 
+  &_active {
+    background-color: rgba($bgMain, 0.15);
+    opacity: 1;
+  }
+
   &:hover {
     background-color: rgba($bgMain, 0.15);
   }
@@ -56,5 +61,12 @@
 @keyframes animation {
   to {
     transform: translate(0);
+  }
+}
+
+@media (max-width: 920px) {
+  .box {
+    flex-direction: column;
+    gap: calc($size * 0.75);
   }
 }

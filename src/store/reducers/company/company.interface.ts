@@ -11,13 +11,6 @@ export interface ICompany {
   adLevel: number;
 }
 
-export interface ICompanyTransferMoney {
-  type: TransferTypes;
-  object: TransferObject;
-  companyId?: number;
-  amount: number;
-}
-
 export interface ICompanyMoney {
   companyId?: number;
   amount: number;

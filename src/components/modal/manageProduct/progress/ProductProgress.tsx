@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useSetupProduction } from "../../../../hooks/setupProduction/setupProduction";
+import { useSetupProduction } from "../../../../hooks/setupProduction/_index";
 import Button from "../../../UI/button/Button";
 import Preloader from "../../../UI/preloader/Preloader";
 import LogoMore from "../../../UI/svg/logoMore/LogoMore";

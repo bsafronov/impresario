@@ -1,11 +1,15 @@
+import { useAppSelector } from "../../../../hooks/redux";
 import CompanyList from "../companyList/CompanyList";
-import "./dashboard.scss";
+import News from "../news/News";
+import s from "./Dashboard.module.scss";
 
 const Dashboard = () => {
+  const { companies } = useAppSelector(state => state.companyReducer);
+  if (!companies.length) return null;
   return (
-    <section className="dashboard">
+    <section className={s.item}>
       <CompanyList />
-      {/* <News /> */}
+      <News />
     </section>
   );
 };

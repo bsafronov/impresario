@@ -1,8 +1,9 @@
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import {
   ICompany,
-  ICompanyTransferMoney,
+  ICompanyMoney,
 } from "../../../../store/reducers/company/company.interface";
 import { companySlice } from "../../../../store/reducers/company/companySlice";
 import { modalSlice } from "../../../../store/reducers/modal/modalSlice";
@@ -17,14 +18,16 @@ import "./manageCompany.scss";
 const ManageCompany = () => {
   const { t } = useTranslation();
   const { setManagingCompanyId, setIsCompanyManager } = modalSlice.actions;
-  const { deleteCompany, transferMoney } = companySlice.actions;
+  const { deleteCompany, moneyFromCompanyToAll } = companySlice.actions;
   const { managingCompanyId } = useAppSelector(state => state.modalReducer);
   const { companies } = useAppSelector(state => state.companyReducer);
   const dispatch = useAppDispatch();
 
-  const current = companies.find(
-    company => company.id === managingCompanyId
-  ) as ICompany;
+  const current = useMemo(
+    () =>
+      companies.find(company => company.id === managingCompanyId) as ICompany,
+    [managingCompanyId]
+  );
 
   function closeModal() {
     dispatch(setManagingCompanyId(null));
@@ -32,21 +35,11 @@ const ManageCompany = () => {
   }
 
   function deleteCurrentCompany() {
-    const fromData: ICompanyTransferMoney = {
-      type: "from",
-      object: "company",
-      amount: current.balance,
+    const data: ICompanyMoney = {
       companyId: current.id,
-    };
-
-    const toData: ICompanyTransferMoney = {
-      type: "to",
-      object: "free money",
       amount: current.balance,
     };
-
-    dispatch(transferMoney(fromData));
-    dispatch(transferMoney(toData));
+    dispatch(moneyFromCompanyToAll(data));
     dispatch(deleteCompany(current.id));
     closeModal();
   }

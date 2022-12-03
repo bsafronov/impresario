@@ -1,17 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPrefs } from "./prefs.interface";
 
 const initialState: IPrefs = {
-  name: '',
+  name: "",
   difficulty: "medium",
-}
+};
 
-export const PrefsSlice = createSlice({
+export const prefsSlice = createSlice({
   name: "prefs",
   initialState,
   reducers: {
-    
-  }
-})
+    setStatePrefs(state, action: PayloadAction<IPrefs | null>) {
+      if (action.payload) {
+        state.name = action.payload.name;
+        state.difficulty = action.payload.difficulty;
+      } else {
+        state.name = initialState.name;
+        state.difficulty = initialState.difficulty;
+      }
+    },
+  },
+});
 
-export default PrefsSlice.reducer;
+export default prefsSlice.reducer;

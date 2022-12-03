@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { shortBalance } from "../../../functions/representation";
+import { useCurrentCompany } from "../../../hooks/findCurrent/findCurrent";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import {
-  ICompany,
-  ICompanyMoney,
-} from "../../../store/reducers/company/company.interface";
+import { ICompanyMoney } from "../../../store/reducers/company/company.interface";
 import { companySlice } from "../../../store/reducers/company/companySlice";
 import { modalSlice } from "../../../store/reducers/modal/modalSlice";
 import { IPlaceCreateNew } from "../../../store/reducers/place/place.interface";
@@ -21,19 +19,15 @@ const CreatePlace = () => {
   const { addPlace } = placeSlice.actions;
   const { moneyFromAll, moneyFromCompany } = companySlice.actions;
 
-  const { managingCompanyId } = useAppSelector(state => state.modalReducer);
-  const { freeMoney, companies } = useAppSelector(
-    state => state.companyReducer
-  );
+  const { freeMoney } = useAppSelector(state => state.companyReducer);
   const dispatch = useAppDispatch();
 
   const [name, setName] = useState<string>("");
   const [rank, setRank] = useState<number>(0);
   const [isFromCompany, setIsFromCompany] = useState<boolean>(true);
 
-  const currentCompany = companies.find(
-    company => company.id === managingCompanyId
-  ) as ICompany;
+  const currentCompany = useCurrentCompany();
+
   const balance = isFromCompany ? currentCompany.balance : freeMoney;
   const price = rank ** 3 * 3000;
 

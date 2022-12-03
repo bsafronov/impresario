@@ -22,18 +22,25 @@ const ProductTasks: FC<IProductTasks> = ({ tasks }) => {
               <span className={s.green}></span>
             </li>
             <li className={s.line}>
-              <span>Деньги:</span>
+              <span>Затраты:</span>
               <span className={s.value}>
-                <span>{shortBalance(task.expectedIncome)}</span>
-                <LogoMore text={fullBalance(task.expectedIncome)} />
+                <span>{shortBalance(task.costs)}</span>
+                <LogoMore text={fullBalance(task.costs)} />
+              </span>
+            </li>
+            <li className={s.line}>
+              <span>Ожид.прибыль:</span>
+              <span className={s.value}>
+                <span>{shortBalance(task.expectedIncome - task.costs)}</span>
+                <LogoMore
+                  text={fullBalance(task.expectedIncome - task.costs)}
+                />
               </span>
             </li>
             <li className={s.line}>
               <span>Осталось:</span>
               <span>
-                <span>
-                  {task.productionTime - (gameDay - task.startedAtDay)}
-                </span>
+                <span>{task.finishedByDay - gameDay}</span>
                 <span> дней</span>
               </span>
             </li>

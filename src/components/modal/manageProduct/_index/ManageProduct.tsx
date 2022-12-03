@@ -3,7 +3,7 @@ import {
   useCurrentCompany,
   useCurrentProduct,
   useCurrentTasks,
-} from "../../../../hooks/gameLogic";
+} from "../../../../hooks/findCurrent/findCurrent";
 import { useProductCalculations } from "../../../../hooks/productCalculations/productCalculations";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
 import { modalSlice } from "../../../../store/reducers/modal/modalSlice";

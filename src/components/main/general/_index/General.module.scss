@@ -19,8 +19,24 @@
   opacity: 0.2;
 }
 
+.list__box {
+  box-shadow: inset 0 0 8px rgba($bgHeader, 0.4);
+  border-radius: calc($size / 4);
+  overflow-x: auto;
+  padding: calc($size * 0.75);
+
+  &::-webkit-scrollbar {
+    width: calc($size * 0.3);
+    background-color: transparent;
+    border-radius: calc($size * 1);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: calc($size * 0.2);
+    background-color: rgba($bgHeader, 0.1);
+  }
+}
 .list {
   display: flex;
   gap: calc($size * 1);
-  flex-wrap: wrap;
+  width: max-content;
 }

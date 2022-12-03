@@ -1,29 +1,23 @@
 export interface ITasks {
   totalCreated: number;
-  minProductionTime: number | null;
-  tasksActive: ITaskActive[];
-  tasksPending: ITaskPending[];
+  tasksActive: ITask[];
+  tasksPending: ITask[];
 }
 
-export interface ITaskActive extends ITaskPending {
-  startedAtDay: number;
-  profitPercent: number;
-}
-
-export interface ITaskPending {
+export interface ITask {
+  finishedByDay: number;
   id?: number;
   productId: number;
   companyId: number;
-  productionTime: number;
   priceModifier: number;
   salaryModifier: number;
   adLvlUp: number;
   costs: number;
+  salary: number;
   expectedIncome: number;
+  profitPercent: number;
 }
 
 export interface ITaskPendingToActive {
   id: number;
-  startedAtDay: number;
-  profitPercent: number;
 }

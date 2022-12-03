@@ -14,7 +14,7 @@ const Button: FC<IMainButton> = props => {
       disabled={props.disabled}
       onClick={props.onClick}
     >
-      {props.type === "remove" && "Удалить"}
+      {props.type === "remove" && !props.children && "Удалить"}
       {props.children}
     </button>
   );

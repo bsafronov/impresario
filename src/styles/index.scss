@@ -18,6 +18,11 @@ body {
   overflow-x: hidden;
 }
 
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
 // Start button------------------------------------
 button {
   padding: calc($size * 0.3) calc($size * 1);

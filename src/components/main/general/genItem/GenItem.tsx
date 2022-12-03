@@ -1,25 +1,23 @@
 import { FC } from "react";
+import { shortBalance } from "../../../../functions/representation";
+import { useAppSelector } from "../../../../hooks/redux";
 import LogoMore from "../../../UI/svg/logoMore/LogoMore";
-import "./genItem.scss";
+import { IGenItem } from "./GenItem.interface";
+import s from "./GenItem.module.scss";
 
-interface IGenItem {
-  title: string;
-  value: number | string;
-}
+const GenItem: FC<IGenItem> = ({ item }) => {
+  const { statisticBy } = useAppSelector(state => state.rulesReducer);
 
-const GenItem: FC<IGenItem> = ({ title, value }) => {
   return (
-    <li className="general__item">
-      <span className="general__item-title-box">
-        <h3 className="general__item-title">{title}</h3>
-        <LogoMore />
+    <li className={s.item}>
+      <span className={s.title__box}>
+        <h3 className={s.title}>{item.title}</h3>
+        <LogoMore text={item.desc} />
       </span>
-      <p className="general__item-sum">${value}</p>
-      {/* <p className="general__item-income-desc">By last month</p>
-      <p className="general__item-income increase">
-        <span>$2850</span>
-        <LogoArrow />
-      </p> */}
+      <p className={s.sum}>$ {shortBalance(item.value)}</p>
+      {item.isByPeriod && (
+        <p className={s.income__desc}>За {statisticBy} дней</p>
+      )}
     </li>
   );
 };

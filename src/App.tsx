@@ -1,12 +1,12 @@
 import Header from "./components/header/Header";
 import Main from "./components/main/_index/Main";
-import { useGameLogic } from "./hooks/gameLogic";
+import { useGameWatcher } from "./hooks/gameWatcher/_index";
 
 const App = () => {
-  useGameLogic();
+  useGameWatcher();
 
   return (
-    <div>
+    <div className="container">
       <Header />
       <Main />
     </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { modalSlice } from "../../../store/reducers/modal/modalSlice";
@@ -20,7 +20,10 @@ const ManagePlace = () => {
 
   const [choosenPlace, setChoosenPlace] = useState<number | null>(null);
 
-  const availablePlaces = places.filter(place => !place.companyId);
+  const availablePlaces = useMemo(
+    () => places.filter(place => !place.companyId),
+    [places]
+  );
 
   function setCompanyPlace() {
     const data: IPlaceOccupy = {
