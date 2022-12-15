@@ -79,11 +79,11 @@ const CompanyItem: FC<ICompanyItem> = ({ company, operations }) => {
             <ul className={s.bytime__list}>
               <li>
                 <span className={s.desc}>{t("stats.income")}: </span>
-                <span>${incomeSum}</span>
+                <span>${shortBalance(costsSum)}</span>
               </li>
               <li>
                 <span className={s.desc}>{t("stats.costs")}: </span>
-                <span>${costsSum}</span>
+                <span>${shortBalance(costsSum)}</span>
               </li>
               <li>
                 <span className={s.desc}>{t("stats.profit")}: </span>
@@ -94,7 +94,7 @@ const CompanyItem: FC<ICompanyItem> = ({ company, operations }) => {
                       : incomeSum - costsSum < 0 && s.red
                   }
                 >
-                  $ {incomeSum - costsSum}
+                  $ {shortBalance(incomeSum - costsSum)}
                 </span>
               </li>
             </ul>
