@@ -3,6 +3,7 @@
 .box {
   position: relative;
   width: calc($size * 5);
+  font-size: calc($size / 2);
 }
 .title {
   background-color: rgba($bgMain, 0.1);
