@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { shortBalance } from "../../../functions/representation";
+import { useRepresentation } from "../../../functions/representation";
 import { useCurrentCompany } from "../../../hooks/findCurrent/findCurrent";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { ICompanyMoney } from "../../../store/reducers/company/company.interface";
@@ -18,6 +18,7 @@ const CreatePlace = () => {
   const { setIsCreatePlace, setIsPlaceManager } = modalSlice.actions;
   const { addPlace } = placeSlice.actions;
   const { moneyFromAll, moneyFromCompany } = companySlice.actions;
+  const { shortBalance } = useRepresentation();
 
   const { freeMoney } = useAppSelector(state => state.companyReducer);
   const dispatch = useAppDispatch();
@@ -64,27 +65,27 @@ const CreatePlace = () => {
   }
 
   return (
-    <Modal closeFunc={closeModal} closeButton>
+    <Modal closeFunc={closeModal} closeButton centered>
       <div className={s.box}>
-        <h3 className={s.title}>{t("create-place.title")}</h3>
+        <h3 className={s.title}>{t("title.buy_real_estate")}</h3>
         <div className={s.select__box}>
-          <p>{t("create-place.selector-text")}</p>
+          <p className={s.label}>{t("text.from_where")}</p>
           <p className={s.select}>
             <button
               className={isFromCompany ? s.option__active : s.option}
               onClick={() => changeOption(true)}
             >
-              {t("create-place.select-company")}
+              {t("stats.company")}
             </button>
             <button
               className={!isFromCompany ? s.option__active : s.option}
               onClick={() => changeOption(false)}
             >
-              {t("create-place.select-free-money")}
+              {t("stats.free")}
             </button>
           </p>
           <p className={s.balance}>
-            <span>{t("create-place.balance")}</span>
+            <span className={s.label}>{t("stats.balance")}: </span>
             <span className={s.value}>
               ${shortBalance(balance)}
               <span className={s.costs}>{rank > 0 && ` -${price}$`}</span>
@@ -93,7 +94,7 @@ const CreatePlace = () => {
         </div>
         <ul className={s.form}>
           <li className={s.item}>
-            <span>{t("create-place.name")}</span>
+            <span className={s.label}>{t("stats.name")}:</span>
             <Input
               type="text"
               value={name}
@@ -101,7 +102,7 @@ const CreatePlace = () => {
             />
           </li>
           <li className={s.item}>
-            <span>{t("create-place.rank")}</span>
+            <span className={s.label}>{t("stats.rank")}: </span>
             <Input
               type="range"
               min={0}
@@ -109,13 +110,11 @@ const CreatePlace = () => {
               value={rank}
               onChange={e => setRank(+e.target.value)}
             />
-            <span>
-              {rank} {rank > 0 && `(${rank ** 2} ${t("create-place.units")})`}
-            </span>
+            <span>{rank}</span>
           </li>
         </ul>
         {isValidated() && (
-          <Button onClick={submitCreatePlace}>{t("create-place.buy")}</Button>
+          <Button onClick={submitCreatePlace}>{t("button.buy")}</Button>
         )}
       </div>
     </Modal>

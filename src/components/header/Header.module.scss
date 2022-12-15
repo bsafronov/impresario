@@ -11,8 +11,9 @@
 .title {
   display: flex;
   gap: calc($size * 0.5);
-  transform: translate(-200%);
+  transform: translate(-100vw);
   animation: animation 1s forwards;
+  opacity: 0.8;
 }
 
 .logo {
@@ -34,12 +35,15 @@
 
   &__title {
     cursor: pointer;
+    position: relative;
+    z-index: 101;
     transition: text-shadow 0.5s, color 2s;
-    transform: translate(200%);
+    transform: translate(100vw);
     animation: animation 1s forwards;
     display: flex;
     gap: calc($size / 4);
     align-items: center;
+    opacity: 0.8;
   }
 
   &:hover {
@@ -76,10 +80,25 @@
     font-size: calc($size * 0.6);
     border-radius: calc($size * 0.2);
     color: rgb(46, 46, 46);
-    z-index: 10;
+    z-index: 101;
     top: 0;
     right: 0;
     transform: translateY(calc($size * 1.25));
+  }
+}
+
+.fixed {
+  position: fixed;
+  display: none;
+  content: "";
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  // background-color: black;
+  &__active {
+    display: block;
   }
 }
 

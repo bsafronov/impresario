@@ -1,0 +1,17 @@
+@import "/src/styles/vars";
+
+.main {
+  padding: 2vw 5vw;
+}
+
+@media (max-width: 800px) {
+  .main {
+    padding: 2vw 2vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 0;
+  }
+}

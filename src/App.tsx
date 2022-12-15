@@ -1,5 +1,5 @@
+import Main from "./assembler/main/Main";
 import Header from "./components/header/Header";
-import Main from "./components/main/_index/Main";
 import { useGameWatcher } from "./hooks/gameWatcher/_index";
 
 const App = () => {

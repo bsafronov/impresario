@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IRules } from "./rules.interface";
+import { IRules, IRulesStatisticBy } from "./rules.interface";
 
 const initialState: IRules = {
   inflation: 0,
   gameDay: 1,
   createdAt: Date.now(),
-  statisticBy: 30,
+  statisticBy: "month",
 };
 
 export const rulesSlice = createSlice({
@@ -32,7 +32,7 @@ export const rulesSlice = createSlice({
       const minutesAfterCreated = (Date.now() - state.createdAt) / 60000;
       state.gameDay = 1 + Math.floor(minutesAfterCreated);
     },
-    setStatisticBy(state, action: PayloadAction<number>) {
+    setStatisticBy(state, action: PayloadAction<IRulesStatisticBy>) {
       state.statisticBy = action.payload;
     },
   },

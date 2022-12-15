@@ -1,10 +1,10 @@
 export interface ITasks {
   totalCreated: number;
-  tasksActive: ITask[];
-  tasksPending: ITask[];
+  tasks: ITask[];
 }
 
 export interface ITask {
+  startedByDay: number;
   finishedByDay: number;
   id?: number;
   productId: number;
@@ -16,8 +16,7 @@ export interface ITask {
   salary: number;
   expectedIncome: number;
   profitPercent: number;
+  type: ITaskType;
 }
 
-export interface ITaskPendingToActive {
-  id: number;
-}
+export type ITaskType = "active" | "pending";

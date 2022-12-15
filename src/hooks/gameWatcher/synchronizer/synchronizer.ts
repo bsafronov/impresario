@@ -32,6 +32,8 @@ export function useSynchronizer() {
   const { setStateRules } = rulesSlice.actions;
   const { setStateTasks } = taskSlice.actions;
 
+  const VERSION = 1.0;
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     const savedDataString = localStorage.getItem("impresario");
@@ -39,6 +41,8 @@ export function useSynchronizer() {
     function syncStates() {
       if (!savedDataString) return;
       const savedData: ISynchronizerData = JSON.parse(savedDataString);
+
+      if (savedData.version !== VERSION) return;
 
       dispatch(setStateCompanies(savedData.company));
       dispatch(setStateModals(savedData.modal));
@@ -69,6 +73,7 @@ export function useSynchronizer() {
         product,
         rules,
         tasks,
+        version: VERSION,
       };
 
       localStorage.setItem("impresario", JSON.stringify(data));

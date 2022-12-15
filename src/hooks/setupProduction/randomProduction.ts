@@ -1,20 +1,30 @@
 import { getRandomByPercent, getRandomUpTo } from "../../functions/random";
-import { IProductCalculations } from "../productCalculations/productCalculations.interface";
+import { ISetupRandom } from "./setupProduction.interface";
 
-export function randomProduction(calc: IProductCalculations, costs: number) {
+export function randomProduction(data: ISetupRandom) {
+  const tasksAdLvlUpSum = data.tasks.reduce(
+    (sum, task) => (sum += task.adLvlUp),
+    0
+  );
+
   const randomProductionTime = Math.round(
-    calc.finalState.productionTime +
-      calc.finalState.productionTime * getRandomByPercent(15)
+    data.calc.finalState.productionTime +
+      data.calc.finalState.productionTime * getRandomByPercent(15)
   );
-  const randomProductionPercentValue = getRandomUpTo(
-    calc.conditions.productionMaxPercent
-  );
+
+  const maxSalesPercent =
+    90 +
+    10 *
+      (data.calc.modifier.priceModifier + data.companyAdLvl + tasksAdLvlUpSum);
+
+  const randomProductionPercentValue = getRandomUpTo(maxSalesPercent);
+
   const randomProductionPercent =
     randomProductionPercentValue > 100
       ? 100
       : Math.round(randomProductionPercentValue);
   const expectedIncome =
-    calc.expected.netProfit > 0 ? calc.expected.afterTaxes : 0;
+    data.calc.expected.netProfit > 0 ? data.calc.expected.afterTaxes : 0;
 
   return { randomProductionTime, randomProductionPercent, expectedIncome };
 }

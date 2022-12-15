@@ -1,0 +1,16 @@
+@import "./../../../../styles/vars";
+
+.company-name {
+  &__form {
+    font-size: calc($size * 1);
+    display: flex;
+    gap: calc($size * 0.3);
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .company-name__form {
+    font-size: calc($size * 0.8);
+  }
+}

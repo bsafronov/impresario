@@ -7,6 +7,7 @@ interface IModal {
   children?: ReactNode | null;
   closeFunc: any;
   closeButton?: boolean;
+  centered?: boolean;
 }
 
 const Modal: FC<IModal> = props => {
@@ -14,11 +15,14 @@ const Modal: FC<IModal> = props => {
 
   return (
     <div className={s.box} onMouseDown={props.closeFunc}>
-      <div className={s.inner} onMouseDown={e => e.stopPropagation()}>
+      <div
+        className={props.centered ? [s.inner, s.centered].join(" ") : s.inner}
+        onMouseDown={e => e.stopPropagation()}
+      >
         {props.children}
         {props.closeButton && (
           <Button type="main-accept" onClick={props.closeFunc}>
-            {t("all.close")}
+            {t("button.close")}
           </Button>
         )}
       </div>

@@ -1,0 +1,46 @@
+@import "/src/styles/vars";
+
+.radio {
+  display: none;
+}
+
+.box {
+  padding: calc($size);
+  border-radius: calc($size * 0.2);
+  background-color: rgba($bgHeader, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: calc($size);
+  color: $colorMain;
+}
+
+.title {
+  align-self: center;
+  font-weight: bold;
+}
+
+.null {
+  opacity: 0.2;
+}
+
+.list {
+  border-radius: calc($size * 0.2);
+  overflow: hidden;
+  color: #eee;
+}
+
+.field.active {
+  background-color: rgba($bgHeader, 0.5);
+}
+
+.field {
+  display: block;
+  padding: calc($size * 0.3);
+  background-color: rgba($bgHeader, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:not(.active):hover {
+    background-color: rgba($bgHeader, 0.3);
+  }
+}

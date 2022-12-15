@@ -1,0 +1,101 @@
+@import "/src/styles/vars";
+
+.box {
+  position: relative;
+  width: calc($size * 5);
+}
+.title {
+  background-color: rgba($bgMain, 0.1);
+  font-weight: bold;
+  padding: calc($size * 0.25);
+  border-radius: calc($size * 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc($size * 0.5);
+  color: #fff;
+  opacity: 0.5;
+  transition: opacity 1s;
+
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &.active {
+    border-radius: calc($size * 0.2) calc($size * 0.2) 0 0;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.logo {
+  font-size: calc($size * 0.4);
+  opacity: 0.5;
+  transition: transform 0.5s;
+
+  &__reversed {
+    transform: rotate(180deg);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: Appearance 1s forwards;
+}
+
+.box__inner {
+  max-height: calc($size * 4);
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    background-color: rgba($bgMain, 0.5);
+    width: calc($size * 0.15);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($bgHeader, 0.5);
+  }
+
+  // overflow-x: hidden;
+  // overflow-y: hidden;
+}
+
+.box__outer {
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(#eee, 0.3);
+  border-radius: 0 0 calc($size * 0.2) calc($size * 0.2);
+  overflow: hidden;
+}
+
+.item {
+  cursor: pointer;
+  padding: calc($size * 0.25);
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: max-content;
+
+  &:hover {
+    background-color: rgba($bgHeader, 0.1);
+    color: #fff;
+  }
+}
+
+@keyframes Appearance {
+  to {
+    opacity: 1;
+  }
+}

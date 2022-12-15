@@ -30,19 +30,23 @@ export function useCurrentProduct() {
 }
 
 export function useCurrentTasks() {
-  const { tasksActive, tasksPending } = useAppSelector(
-    state => state.tasksReducer
-  );
+  const { tasks } = useAppSelector(state => state.tasksReducer);
   const { managingProductId } = useAppSelector(state => state.modalReducer);
 
   const activeTasks = useMemo(
-    () => tasksActive.filter(task => task.productId === managingProductId),
-    [managingProductId, tasksActive]
+    () =>
+      tasks.filter(
+        task => task.productId === managingProductId && task.type === "active"
+      ),
+    [managingProductId, tasks]
   );
 
   const pendingTasks = useMemo(
-    () => tasksPending.filter(task => task.productId === managingProductId),
-    [managingProductId, tasksPending]
+    () =>
+      tasks.filter(
+        task => task.productId === managingProductId && task.type === "pending"
+      ),
+    [managingProductId, tasks]
   );
 
   return { activeTasks, pendingTasks };

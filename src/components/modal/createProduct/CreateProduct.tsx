@@ -10,7 +10,7 @@ import Button from "../../UI/button/Button";
 import Input from "../../UI/input/Input";
 import Modal from "../../UI/modal/Modal";
 import SvgTriangle from "../../UI/svg/triangle/SvgTriangle";
-import "./createProduct.scss";
+import s from "./CreateProduct.module.scss";
 
 interface IPlace {
   id: number | null;
@@ -20,7 +20,8 @@ interface IPlace {
 
 const CreateProduct = () => {
   const { t } = useTranslation();
-  const { setIsCompanyManager, setIsCreateProduct } = modalSlice.actions;
+  const { setIsCompanyManager, setIsCreateProduct, setIsPlaceManager } =
+    modalSlice.actions;
   const { createProduct } = productSlice.actions;
   const { giveSpaceToProduct } = placeSlice.actions;
 
@@ -69,87 +70,97 @@ const CreateProduct = () => {
     return name !== "" && productArea > 0;
   }
 
+  function openCreatePlace() {
+    dispatch(setIsCreateProduct(false));
+    dispatch(setIsPlaceManager(true));
+  }
+
   function closeModal() {
     dispatch(setIsCreateProduct(false));
     dispatch(setIsCompanyManager(true));
   }
 
   return (
-    <Modal closeFunc={closeModal} closeButton>
-      <div className="create-product__box">
-        <p>
-          <span>{t("create-product.name")}</span>
-          <Input
-            value={name}
-            onChange={e => setName(e.target.value)}
-            type="text"
-          />
-        </p>
-        <div className="create-product__select-box">
-          <span>{t("create-product.place")}</span>
+    <Modal closeFunc={closeModal} closeButton centered>
+      <div className={s.box}>
+        <div className={s.select__box}>
           {freePlaces.length > 0 ? (
-            <div className="create-product__select">
-              <div
-                className={
-                  isSelect
-                    ? "create-product__select-title active"
-                    : "create-product__select-title"
-                }
-                onClick={() => setIsSelect(!isSelect)}
-              >
-                <span>
-                  {choosenPlace
-                    ? choosenPlace.name
-                    : t("create-product.select-desc")}
-                </span>
-                <span className="create-product__select-svg">
-                  <SvgTriangle />
-                </span>
-              </div>
-              <ul
-                className={
-                  isSelect
-                    ? "create-product__options active"
-                    : "create-product__options"
-                }
-              >
-                {freePlaces.map(place => (
-                  <li
-                    className="create-product__options-item"
-                    key={place.id}
-                    onClick={() =>
-                      choosePlace(place.id, place.freeSpace, place.name)
+            <>
+              <p className={s.input__form}>
+                <span className={s.label}>{t("text.create_title")}: </span>
+                <Input
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  type="text"
+                />
+              </p>
+              <div>
+                <span className={s.label}>{t("title.location")}: </span>
+                <div className={s.select}>
+                  <div
+                    className={
+                      isSelect
+                        ? [s.select__title, s.select__title_active].join(" ")
+                        : s.select__title
+                    }
+                    onClick={() => setIsSelect(!isSelect)}
+                  >
+                    <span className={s.title__name}>
+                      {choosenPlace ? choosenPlace.name : t("text.choose")}
+                    </span>
+                    <span className={s.select__svg}>
+                      <SvgTriangle />
+                    </span>
+                  </div>
+                  <ul
+                    className={
+                      isSelect
+                        ? [s.options, s.options__active].join(" ")
+                        : s.options
                     }
                   >
-                    {place.name}
-                    <span className="create-product__options-desc">
-                      ({place.freeSpace} {t("create-product.select-area")})
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    {freePlaces.map(place => (
+                      <li
+                        className={s.options__item}
+                        key={place.id}
+                        onClick={() =>
+                          choosePlace(place.id, place.freeSpace, place.name)
+                        }
+                      >
+                        <span className={s.value}>{place.name}</span>
+                        <span className={s.options__desc}>
+                          ({place.freeSpace} {t("text.units")})
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              {choosenPlace && (
+                <p className="create-product__area">
+                  <span className={s.label}>{t("stats.area")}: </span>
+                  <input
+                    className="input"
+                    type="range"
+                    min={0}
+                    max={(choosenPlace && choosenPlace.freeUnits) || 1}
+                    value={productArea}
+                    onChange={e => setProductArea(+e.target.value)}
+                  />
+                  <span>{productArea}</span>
+                </p>
+              )}
+              <Button onClick={createNewProduct} disabled={!isValidated()}>
+                {t("button.create")}
+              </Button>
+            </>
           ) : (
-            <span>{t("create-product.desc-null")}</span>
+            <>
+              <span className={s.null}>{t("text.real_estate_null_2")}</span>
+              <Button onClick={openCreatePlace}>{t("button.add")}</Button>
+            </>
           )}
         </div>
-        {choosenPlace && (
-          <p className="create-product__area">
-            <span>{t("create-product.area")}</span>
-            <input
-              className="input"
-              type="range"
-              min={0}
-              max={(choosenPlace && choosenPlace.freeUnits) || 1}
-              value={productArea}
-              onChange={e => setProductArea(+e.target.value)}
-            />
-            <span>{productArea}</span>
-          </p>
-        )}
-        <Button onClick={createNewProduct} disabled={!isValidated()}>
-          {t("create-product.create")}
-        </Button>
       </div>
     </Modal>
   );

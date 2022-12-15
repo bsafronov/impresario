@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { rulesSlice } from "../../store/reducers/rules/rulesSlice";
 
 import { useAppDispatch } from "../redux";
-import { useTasksWatcher } from "./manageTasks/tasksWatcher";
 import { useSynchronizer } from "./synchronizer/synchronizer";
+import { useTasksWatcher } from "./tasksWatcher/tasksWatcher";
 
 export function useGameWatcher() {
   const INFLATION = 10;

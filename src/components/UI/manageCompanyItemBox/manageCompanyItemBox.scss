@@ -10,3 +10,9 @@
   padding: calc($size * 0.5);
   background-color: rgba($bgHeader, 0.4);
 }
+
+@media (max-width: 480px) {
+  .manage-company-item__box {
+    font-size: calc($size * 0.8);
+  }
+}

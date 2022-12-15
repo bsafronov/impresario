@@ -18,4 +18,5 @@ export interface ISynchronizerData {
   product: IProducts;
   rules: IRules;
   tasks: ITasks;
+  version: number;
 }

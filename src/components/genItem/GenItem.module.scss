@@ -1,0 +1,82 @@
+@import "/src/styles/vars";
+
+.item {
+  background-image: linear-gradient(180deg, $bgHeader, transparent);
+  box-shadow: 0px -10px 20px rgba($bgHeader, 0.2);
+  font-size: calc($size * 0.9);
+  padding: calc($size * 0.5);
+  border-radius: calc($size * 0.3);
+  opacity: 0;
+  animation: genItemAnim 3s forwards;
+  width: calc($size * 6);
+}
+.title {
+  font-size: calc($size * 0.6);
+  margin-bottom: calc($size * 0.5);
+  opacity: 0.4;
+
+  &__box {
+    display: flex;
+    gap: calc($size * 0.225);
+  }
+
+  &__box svg {
+    width: calc($size * 0.5);
+    height: calc($size * 0.5);
+    cursor: pointer;
+
+    &:hover path {
+      fill: #eee;
+    }
+    &:hover {
+      filter: drop-shadow(0px 0px 12px $bgMain);
+    }
+  }
+
+  &__box path {
+    fill: $bgMain;
+    transition: fill 0.4s;
+  }
+}
+
+.sum {
+  color: #eee;
+  margin-bottom: calc($size * 0.5);
+}
+
+.change {
+  opacity: 0;
+  animation: genItemAnim 1s forwards;
+}
+.income {
+  font-size: calc($size * 0.6);
+  display: flex;
+  gap: calc($size * 0.2);
+
+  & svg {
+    transform: rotate(15deg);
+    width: calc($size * 0.6);
+    height: calc($size * 0.6);
+  }
+
+  &__desc {
+    font-size: calc($size * 0.4);
+    color: rgba(#eee, 0.5);
+  }
+}
+
+@keyframes genItemAnim {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 400px) {
+  .item {
+    width: calc($size * 5);
+  }
+
+  .title {
+    font-size: calc($size * 0.5);
+  }
+}

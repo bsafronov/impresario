@@ -4,8 +4,12 @@
   display: flex;
   flex-direction: column;
   gap: calc($size * 0.5);
+  color: $colorMain;
 }
 
+.label {
+  opacity: 0.5;
+}
 .title {
   font-size: $size;
   font-weight: bold;
@@ -20,6 +24,7 @@
 
 .item {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: calc($size * 0.5);
 }
@@ -69,4 +74,10 @@
 .costs {
   color: rgb(248 85 85);
   font-size: calc($size * 0.7);
+}
+
+@media (max-width: 400px) {
+  .select {
+    flex-direction: column;
+  }
 }

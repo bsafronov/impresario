@@ -1,0 +1,50 @@
+@import "/src/styles/vars";
+
+.exchange {
+  display: flex;
+  align-items: center;
+  gap: calc($size * 0.3);
+  // font-size: calc($size * 0.7);
+  min-width: calc($size * 15);
+}
+
+.form {
+  display: flex;
+  gap: calc($size * 0.5);
+  align-items: center;
+}
+
+.label {
+  font-weight: bold;
+  color: #eee;
+}
+.input {
+  display: block;
+  flex-basis: 150%;
+  background-color: #eee;
+  font-weight: bold;
+
+  &:invalid {
+    background-color: lightcoral;
+  }
+
+  &::placeholder {
+    font-weight: bold;
+  }
+}
+
+.property {
+  opacity: 0.2;
+}
+.value {
+  opacity: 0.8;
+}
+.accept:disabled {
+  opacity: 0.1;
+}
+
+@media (max-width: 480px) {
+  .form {
+    flex-direction: column;
+  }
+}

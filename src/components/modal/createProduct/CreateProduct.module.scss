@@ -1,0 +1,130 @@
+@import "/src/styles/vars";
+
+.box {
+  display: flex;
+  gap: calc($size);
+  flex-direction: column;
+  padding: calc($size);
+  border-radius: calc($size * 0.2);
+  background-color: rgba(82, 29, 75, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: calc($size);
+  color: $colorMain;
+}
+
+.input__form {
+  display: flex;
+  flex-direction: column;
+  gap: calc($size * 0.3);
+}
+
+.label {
+  opacity: 0.5;
+}
+
+.select__box {
+  display: flex;
+  flex-direction: column;
+  gap: calc($size * 1);
+}
+
+.null {
+  opacity: 0.2;
+}
+
+.title__name {
+  max-width: calc($size * 4.4);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  width: calc($size * 10);
+  font-size: calc($size * 0.7);
+  flex-basis: 100%;
+  color: rgba(black, 0.5);
+}
+
+.value {
+  max-width: calc($size * 6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select__title {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.1s, border-radius 0.5s;
+  padding: calc($size * 0.2) calc($size * 0.5);
+  border-radius: calc($size * 0.2);
+  background-color: #eee;
+  z-index: 11;
+
+  &:hover {
+    background-color: rgb(196, 196, 196);
+  }
+}
+
+.select__title_active {
+  border-radius: calc($size * 0.3) calc($size * 0.3) 0 0;
+  background-color: rgb(196, 196, 196);
+}
+
+.select__svg {
+  width: calc($size * 0.7);
+  height: calc($size * 0.7);
+
+  & svg {
+    transform: rotate(90deg);
+    overflow: visible;
+  }
+
+  & path {
+    width: calc($size * 0.7);
+    height: calc($size * 0.7);
+    fill: rgba($bgMain, 0.5);
+  }
+}
+
+.options {
+  position: absolute;
+  max-height: calc($size * 9);
+  z-index: 1;
+  width: 100%;
+  background-color: rgb(145, 132, 145);
+  border-radius: 0 0 calc($size * 0.2) calc($size * 0.2);
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.options__active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.options__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc($size * 0.1) calc($size * 0.5);
+  border-top: calc($size * 0.001) solid rgba(rgb(160, 160, 160), 0.3);
+  cursor: pointer;
+  transition: background-color 0.1s;
+
+  &:hover {
+    background-color: rgb(160, 160, 160);
+  }
+}
+
+.options__desc {
+  font-size: calc($size * 0.5);
+  font-weight: bold;
+}

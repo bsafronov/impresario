@@ -2,27 +2,30 @@
 
 .title {
   text-align: center;
-  font-size: calc($size * 1.5);
+  font-size: calc($size * 1.2);
   margin-bottom: $size;
 }
 
 .box {
-  width: 50%;
-  background-color: $bgMain;
-  border-radius: calc($size * 0.75);
-  opacity: 1;
-  position: relative;
-  z-index: 10;
-  padding: $size;
-  font-size: calc($size * 0.75);
-  color: rgb(31, 30, 30);
+  padding: calc($size);
+  border-radius: calc($size * 0.2);
+  background-color: rgba(82, 29, 75, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: calc($size);
+}
+
+.label {
+  font-size: calc($size * 1);
+  color: $colorMain;
+  font-weight: bold;
+  opacity: 0.5;
 }
 
 .point {
   display: flex;
   gap: calc($size * 0.3);
   flex-direction: column;
-  max-width: 50%;
   margin-bottom: calc($size);
 }
 
@@ -30,6 +33,7 @@
   padding: calc($size * 0.2);
   margin-bottom: calc($size * 0.5);
   border-radius: calc($borderRad * 0.5);
+  background-color: #eee;
 }
 
 .accept {

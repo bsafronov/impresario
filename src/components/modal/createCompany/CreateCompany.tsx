@@ -28,11 +28,10 @@ const CreateCompany = () => {
   }
 
   return (
-    <Modal closeFunc={closeModal} closeButton>
-      <h3 className={s.title}>{t("create-company.title")}</h3>
-      <div>
+    <Modal closeFunc={closeModal} closeButton centered>
+      <div className={s.box}>
         <div className={s.point}>
-          <label>{t("create-company.name")}</label>
+          <label className={s.label}>{t("text.create_title")}: </label>
           <input
             className={s.input}
             type="text"
@@ -41,7 +40,7 @@ const CreateCompany = () => {
           />
         </div>
         <Button disabled={!isFormValidated()} onClick={submitCreateCompany}>
-          {t("all.accept")}
+          {t("button.create")}
         </Button>
       </div>
     </Modal>

@@ -10,6 +10,7 @@ const initialState: IModals = {
   isCompanyManager: false,
   isPlaceManager: false,
   isProductManager: false,
+  isOptionsManager: false,
 };
 
 export const modalSlice = createSlice({
@@ -26,6 +27,7 @@ export const modalSlice = createSlice({
         state.isCompanyManager = action.payload.isCompanyManager;
         state.isPlaceManager = action.payload.isPlaceManager;
         state.isProductManager = action.payload.isProductManager;
+        state.isOptionsManager = action.payload.isOptionsManager;
       } else {
         state.managingCompanyId = initialState.managingCompanyId;
         state.managingProductId = initialState.managingProductId;
@@ -35,6 +37,7 @@ export const modalSlice = createSlice({
         state.isCompanyManager = initialState.isCompanyManager;
         state.isPlaceManager = initialState.isPlaceManager;
         state.isProductManager = initialState.isProductManager;
+        state.isOptionsManager = initialState.isOptionsManager;
       }
     },
     setManagingCompanyId(state, action: PayloadAction<number | null>) {
@@ -60,6 +63,9 @@ export const modalSlice = createSlice({
     },
     setIsProductManager(state, action: PayloadAction<boolean>) {
       state.isProductManager = action.payload;
+    },
+    setIsOptionsManager(state, action: PayloadAction<boolean>) {
+      state.isOptionsManager = action.payload;
     },
   },
 });

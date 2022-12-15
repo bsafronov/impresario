@@ -1,15 +1,19 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useProgressDeleter } from "../../hooks/progressDeleter/progressDeleter";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import i18n from "../../i18n";
+import { modalSlice } from "../../store/reducers/modal/modalSlice";
+
 import Button from "../UI/button/Button";
 import LogoOptions from "../UI/svg/LogoOptions";
 import s from "./Header.module.scss";
 
 function Header() {
   const { t } = useTranslation();
-  const [isOptions, setIsOptions] = useState(false);
+  const { isOptionsManager } = useAppSelector(state => state.modalReducer);
+  const { setIsOptionsManager } = modalSlice.actions;
   const { deleteAllProgress } = useProgressDeleter();
+  const dispatch = useAppDispatch();
 
   const languageStyle = [
     s.language__bg,
@@ -30,21 +34,23 @@ function Header() {
         <span className={s.logo}>
           IMPRE<span className={s.logo_s}>$</span>ARIO
         </span>
-        <span className={s.status}>В разработке</span>
+        <span className={s.status}>{t("text.status")}</span>
       </p>
       <div className={s.options}>
         <span
           className={s.options__title}
-          onClick={() => setIsOptions(!isOptions)}
+          onClick={() => dispatch(setIsOptionsManager(!isOptionsManager))}
         >
-          <span>{t("header.options")}</span>
+          <span>{t("title.options")}</span>
           <LogoOptions />
         </span>
         <div
-          className={[s.options__list, isOptions ? null : s.hidden].join(" ")}
+          className={[s.options__list, isOptionsManager ? null : s.hidden].join(
+            " "
+          )}
         >
           <p className={s.option}>
-            <span>Язык: </span>
+            <span>{t("text.language")}: </span>
             <button className={s.language} onClick={changeLanguage}>
               <span>EN</span>
               <span>RU</span>
@@ -53,10 +59,16 @@ function Header() {
           </p>
           <p className={s.option}>
             <Button onClick={deleteAllProgress} type="remove">
-              Стереть прогресс
+              {t("text.clear_progress")}
             </Button>
           </p>
         </div>
+        <div
+          className={
+            isOptionsManager ? [s.fixed, s.fixed__active].join(" ") : s.fixed
+          }
+          onClick={() => dispatch(setIsOptionsManager(false))}
+        ></div>
       </div>
     </header>
   );

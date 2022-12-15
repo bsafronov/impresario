@@ -1,11 +1,11 @@
 // Цветовая палитра
 :root {
-  --size: 2vw;
+  --size: 1.7vw;
 }
 
-$bgMain: rgb(86, 128, 141);
-$bgHeader: rgb(82, 29, 75);
-$colorMain: rgb(201, 201, 201);
+$bgMain: #56808d;
+$bgHeader: #521d4b;
+$colorMain: #eee;
 
 // Резиновая верстка
 $size: var(--size);
@@ -15,13 +15,19 @@ $borderRad: 10px;
 
 @media (min-width: 1920px) {
   :root {
-    --size: 38.4px;
+    --size: 32.64px;
+  }
+}
+
+@media (max-width: 1600px) {
+  :root {
+    --size: 1.8vw;
   }
 }
 
 @media (max-width: 1320px) {
   :root {
-    --size: 2.8vw;
+    --size: 2.4vw;
   }
 }
 
@@ -39,36 +45,24 @@ $borderRad: 10px;
 
 @media (max-width: 800px) {
   :root {
-    --size: 3.6vw;
-  }
-}
-
-@media (max-width: 800px) {
-  :root {
     --size: 4vw;
   }
 }
 
 @media (max-width: 680px) {
   :root {
-    --size: 4.4vw;
+    --size: 5vw;
   }
 }
 
 @media (max-width: 560px) {
   :root {
-    --size: 4.8vw;
+    --size: 5.5vw;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --size: 5.2vw;
-  }
-}
-
-@media (max-width: 400px) {
-  :root {
-    --size: 6vw;
+    --size: 7vw;
   }
 }
