@@ -75,6 +75,7 @@
   padding: calc($size * 0.5);
   border-radius: calc($size * 0.4);
   box-shadow: inset 0 0 8px rgba($bgHeader, 0.5);
+  min-width: calc($size * 7);
 
   &__title {
     margin-bottom: calc($size * 0.25);

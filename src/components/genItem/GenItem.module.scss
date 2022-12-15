@@ -8,7 +8,7 @@
   border-radius: calc($size * 0.3);
   opacity: 0;
   animation: genItemAnim 3s forwards;
-  width: calc($size * 6);
+  min-width: calc($size * 6);
 }
 .title {
   font-size: calc($size * 0.6);

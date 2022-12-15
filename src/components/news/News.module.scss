@@ -5,7 +5,7 @@
   border-radius: calc($size * 0.4);
   background-image: linear-gradient(rgba($bgHeader, 0.4), rgba($bgMain, 0.1));
   box-shadow: 0 0 10px rgba($bgHeader, 0.15);
-  width: calc($size * 22);
+  width: calc($size * 20);
   opacity: 0;
   animation: Opacity 1s 1s forwards;
 }
